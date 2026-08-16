@@ -1,0 +1,27 @@
+.sidera-home-body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+.sidera-home {
+  inline-size: 100%;
+  margin: 0;
+}
+
+.sidera-home :where(.sidera-section-heading__eyebrow) {
+  color: var(--color-primary);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.sidera-home :where(.sidera-section-heading__title) {
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.sidera-home :where(.sidera-section-heading__title em) {
+  color: var(--color-primary);
+}
