@@ -9,7 +9,7 @@ import {
   jsonResponse,
 } from "../../../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.calendly-webhook";
+const feature = "sidera-nocturne.calendly-webhook";
 export const POST: APIRoute = async (context) => {
   const methodError = requirePost(context.request);
   if (methodError) return methodError;

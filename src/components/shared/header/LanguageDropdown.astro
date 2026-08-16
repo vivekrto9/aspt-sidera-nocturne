@@ -140,7 +140,7 @@ const classes = [
     if (root.dataset.languageDropdownReady === "true") return;
     root.dataset.languageDropdownReady = "true";
 
-    const localeStorageKey = "sidera-meridian:selected-locale";
+    const localeStorageKey = "sidera-nocturne:selected-locale";
     const trigger = root.querySelector<HTMLButtonElement>("[data-language-trigger]");
     const menu = root.querySelector<HTMLElement>("[data-language-menu]");
     if (!trigger || !menu) return;

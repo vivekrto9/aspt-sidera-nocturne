@@ -15,7 +15,7 @@ import { errorResponse, jsonResponse } from "../../../../../server/generated-sit
 
 export const prerender = false;
 
-const feature = "sidera-warm-modern.generated-site-operations.runtime-config-sync";
+const feature = "sidera-nocturne.generated-site-operations.runtime-config-sync";
 
 const bearerToken = (request: Request) => {
   const header = request.headers.get("authorization") ?? "";

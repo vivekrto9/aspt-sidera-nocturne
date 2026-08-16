@@ -24,6 +24,7 @@
     "astropages:pipeline": "node scripts/astropages-pipeline.mjs",
     "project-assets:contract": "node scripts/validate-project-assets-contract.mjs",
     "project-assets:contract:write": "node scripts/validate-project-assets-contract.mjs --write",
+    "project-assets:seed:local": "node scripts/seed-template-project-assets.mjs local",
     "blog-seed:write": "node --experimental-strip-types scripts/generate-blog-seed.mjs",
     "sales:contract": "node scripts/validate-sales-contract.mjs",
     "users-data:contract": "node scripts/validate-users-data-contract.mjs",

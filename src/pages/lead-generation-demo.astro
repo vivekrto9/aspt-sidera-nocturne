@@ -226,7 +226,7 @@ const seoContent = {
       if (!(form instanceof HTMLFormElement) || !(status instanceof HTMLElement)) return;
       if (!form.reportValidity()) return;
 
-      const submit = form.querySelector("button[type='submit']");
+      const submit = form.querySelector<HTMLButtonElement>("button[type='submit']");
       const data = new FormData(form);
       const params = new URLSearchParams(window.location.search);
       const payload = {

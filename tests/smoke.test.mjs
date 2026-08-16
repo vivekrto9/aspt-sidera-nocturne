@@ -6,10 +6,10 @@ const root = new URL("../", import.meta.url);
 const read = (path) => readFileSync(new URL(path, root), "utf8");
 const readJson = (path) => JSON.parse(read(path));
 
-test("Sidera Warm Modern exposes its theme manifest", () => {
+test("Sidera Nocturne exposes its theme manifest", () => {
   const manifest = readJson("template.manifest.json");
-  assert.equal(manifest.templateKey, "sidera-warm-modern");
-  assert.equal(manifest.displayName, "Sidera Warm Modern");
+  assert.equal(manifest.templateKey, "sidera-nocturne");
+  assert.equal(manifest.displayName, "Sidera Nocturne");
   assert.deepEqual(manifest.supportedCapabilities, [
     "capability-content-seo-localization@0.3.0",
     "capability-generated-site-operations@0.3.0",

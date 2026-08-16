@@ -38,6 +38,10 @@ import "../styles/account/account.css";
 
 export const prerender = false;
 
+// Astro's generated component signature drops this large server-only prop model.
+// Keep the shared component boundary while the runtime continues to receive the typed model.
+const AccountOverviewSection = AccountOverview as any;
+
 const {
   content,
   locale,
@@ -319,7 +323,7 @@ const footerLegalLinks = [
         builderEdit("account_sign_out_label"),
       )}
     >
-      <AccountOverview
+      <AccountOverviewSection
         dateLabel={overview.dateLabel}
         greeting={content[overview.greetingKey]}
         greetingField={overview.greetingKey}

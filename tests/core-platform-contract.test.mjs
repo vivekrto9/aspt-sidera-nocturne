@@ -51,7 +51,7 @@ const baseTables = new Set([
 
 test("analytics manifest is read-only and scoped to base runtime tables", () => {
   const manifest = readJson("astropages/analytics.manifest.json");
-  assert.equal(manifest.templateKey, "sidera-warm-modern");
+  assert.equal(manifest.templateKey, "sidera-nocturne");
   assert.equal(manifest.source, "d1");
 
   const serialized = JSON.stringify(manifest);

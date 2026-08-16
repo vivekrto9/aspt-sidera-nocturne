@@ -4,7 +4,7 @@ import { errorResponse, jsonResponse } from "../../../../../../server/generated-
 import { requireContentReleaseServiceAuth } from "../../../../../../server/generated-site/content-release-auth.ts";
 
 export const prerender = false;
-const feature = "sidera-warm-modern.project-assets.restore";
+const feature = "sidera-nocturne.project-assets.restore";
 
 export const POST: APIRoute = async (context) => {
   const auth = await requireContentReleaseServiceAuth(context, feature);

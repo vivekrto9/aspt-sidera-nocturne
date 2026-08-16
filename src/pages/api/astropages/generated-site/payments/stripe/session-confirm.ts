@@ -20,7 +20,7 @@ import {
   jsonResponse,
 } from "../../../../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.session-payment-confirm";
+const feature = "sidera-nocturne.session-payment-confirm";
 
 export const POST: APIRoute = async (context) => {
   const methodError = requirePost(context.request);

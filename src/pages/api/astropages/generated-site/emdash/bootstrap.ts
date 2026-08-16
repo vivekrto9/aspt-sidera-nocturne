@@ -8,7 +8,7 @@ import { requireContentReleaseServiceAuth } from "../../../../../server/generate
 
 export const prerender = false;
 
-const feature = "sidera-warm-modern.generated-site-emdash.bootstrap";
+const feature = "sidera-nocturne.generated-site-emdash.bootstrap";
 
 const bearerToken = (request: Request) => {
   const header = request.headers.get("authorization") ?? "";

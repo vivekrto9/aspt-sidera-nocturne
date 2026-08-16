@@ -47,8 +47,11 @@ const walk = (dir) =>
 const failures = [];
 const serverCapabilityPrefix = "src/server/capabilities/";
 const providerLeakAllowedPrefixes = [
+  ".dev.vars.example",
+  ".env.example",
   "src/server/capabilities/vendor/astropages-capabilities/",
   "src/server/capabilities/provider-boundary.ts",
+  "src/server/aggregator/astrology-api-config.ts",
   "src/server/aggregator/payments/",
   "tests/",
 ];

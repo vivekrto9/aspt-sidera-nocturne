@@ -10,7 +10,7 @@ import {
   jsonResponse,
 } from "../../../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.customer-auth.reset-password";
+const feature = "sidera-nocturne.customer-auth.reset-password";
 export const POST: APIRoute = async (context) => {
   const methodError = requirePost(context.request);
   if (methodError) return methodError;

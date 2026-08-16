@@ -12,7 +12,7 @@ import { errorResponse, jsonResponse } from "../../../../../server/generated-sit
 
 export const prerender = false;
 
-const feature = "sidera-warm-modern.builder-diff";
+const feature = "sidera-nocturne.builder-diff";
 
 export const GET: APIRoute = async (context) => {
   const env = await getRuntimeEnv(context);

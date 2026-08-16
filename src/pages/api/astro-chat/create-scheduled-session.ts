@@ -12,7 +12,7 @@ import {
   jsonResponse,
 } from "../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.calendly-create-session";
+const feature = "sidera-nocturne.calendly-create-session";
 export const POST: APIRoute = async (context) => {
   const methodError = requirePost(context.request);
   if (methodError) return methodError;

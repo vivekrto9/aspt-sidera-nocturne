@@ -15,16 +15,16 @@ const docs = {
   productLeads: read("docs/product-lead-generation.md"),
 };
 
-test("repository docs describe Sidera Warm Modern without stale single-page or legacy catalog guidance", () => {
+test("repository docs describe Sidera Nocturne without stale single-page or legacy catalog guidance", () => {
   const publicDocs = Object.values(docs).join("\n");
   const d1Schema = read("database/d1/001_initial_site_schema.sql");
 
-  assert.match(docs.readme, /# Sidera Warm Modern/);
-  assert.match(docs.readme, /Warm Modern Sidera theme/);
+  assert.match(docs.readme, /# Sidera Nocturne/);
+  assert.match(docs.readme, /Nocturne Sidera theme/);
   assert.doesNotMatch(publicDocs, /single-page AstroPages template/i);
   assert.doesNotMatch(publicDocs, /only the home page/i);
   assert.doesNotMatch(d1Schema, /single-page/i);
-  assert.doesNotMatch(publicDocs, /templates\/sidera-warm-modern\/0\.1\.0\//);
+  assert.doesNotMatch(publicDocs, /templates\/sidera-nocturne\/0\.1\.0\//);
   assert.doesNotMatch(publicDocs, /\b(?:PREVIEW_ASTRAGURU|PROD_ASTRAGURU|ASTROCONNECT)\b/);
   assert.match(docs.readme, /AstroPages Admin owns the semantic version, release notes, and changelog/i);
 });
@@ -34,7 +34,7 @@ test("lead documentation is an agent-ready integration reference", () => {
   assert.match(docs.leads, /leads\.v1/);
   assert.match(docs.leads, /linkBusinessLead/);
   assert.match(docs.leads, /markLeadConvertedBySourceReference/);
-  assert.match(docs.leads, /wrangler d1 execute sidera-warm-modern-site --local/);
+  assert.match(docs.leads, /wrangler d1 execute sidera-nocturne-site --local/);
   assert.match(docs.productLeads, /POST \/api\/astropages\/generated-site\/leads\/product-interest/);
   assert.match(docs.productLeads, /pnpm wrangler dev --local --port 4321/);
 });

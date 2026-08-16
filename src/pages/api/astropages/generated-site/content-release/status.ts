@@ -6,7 +6,7 @@ import { requireContentReleaseServiceAuth } from "../../../../../server/generate
 
 export const prerender = false;
 
-const feature = "sidera-warm-modern.content-release.status";
+const feature = "sidera-nocturne.content-release.status";
 
 export const GET: APIRoute = async (context) => {
   const auth = await requireContentReleaseServiceAuth(context, feature);

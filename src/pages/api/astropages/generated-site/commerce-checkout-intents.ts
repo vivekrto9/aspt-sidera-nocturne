@@ -19,7 +19,7 @@ import {
   jsonResponse,
 } from "../../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.commerce-checkout";
+const feature = "sidera-nocturne.commerce-checkout";
 
 export const POST: APIRoute = async (context) => {
   const methodError = requirePost(context.request);

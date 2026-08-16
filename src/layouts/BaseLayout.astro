@@ -93,7 +93,7 @@ const seo = buildPublicSeo({
     <script is:inline define:vars={{ locale, defaultLocale, activeLocaleCodesJson }}>
       (() => {
         try {
-          const localeStorageKey = "sidera-meridian:selected-locale";
+          const localeStorageKey = "sidera-nocturne:selected-locale";
           const activeLocaleSet = new Set(JSON.parse(activeLocaleCodesJson));
           const currentUrl = new URL(window.location.href);
           const requestedLocale = currentUrl.searchParams.get("locale");
@@ -144,7 +144,7 @@ const seo = buildPublicSeo({
       <script is:inline type="application/ld+json" set:html={JSON.stringify(entry).replace(/</g, "\\u003c")}></script>
     ))}
   </head>
-  <body data-runtime-substrate="cloudflare" data-site-source="sidera-meridian" data-locale={locale} class={bodyClass}>
+  <body data-runtime-substrate="cloudflare" data-site-source="sidera-nocturne" data-locale={locale} class={bodyClass}>
     <slot />
     {builderToolbar ? <BuilderToolbar {...builderToolbar} /> : null}
   </body>

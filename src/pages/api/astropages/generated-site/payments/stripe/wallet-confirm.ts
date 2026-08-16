@@ -6,7 +6,7 @@ import { getCustomerWalletSummary, getWalletPaymentAttempt, getWalletRecharge, l
 import { getRuntimeEnv, readJsonBody, requirePost } from "../../../../../../server/generated-site/request.ts";
 import { errorResponse, jsonResponse } from "../../../../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.wallet-payment-confirm";
+const feature = "sidera-nocturne.wallet-payment-confirm";
 export const POST: APIRoute = async (context) => {
   const methodError = requirePost(context.request); if (methodError) return methodError;
   const env = await getRuntimeEnv(context);

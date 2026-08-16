@@ -3,7 +3,7 @@ import { loginCustomer } from "../../../../../server/aggregator/customer-auth.ts
 import { getRuntimeEnv, readJsonBody, requirePost } from "../../../../../server/generated-site/request.ts";
 import { errorResponse, jsonResponse } from "../../../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.customer-auth.login";
+const feature = "sidera-nocturne.customer-auth.login";
 
 export const POST: APIRoute = async (context) => {
   const methodError = requirePost(context.request);

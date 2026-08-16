@@ -1,6 +1,6 @@
 # AstroPages Leads (`leads.v1`)
 
-This file is the implementation reference for agents deriving a theme from `sidera-warm-modern`. The base provides the generic D1 contract and server helpers, but intentionally does not expose a standalone public lead endpoint or ship vertical forms.
+This file is the implementation reference for agents deriving a theme from `sidera-nocturne`. The base provides the generic D1 contract and server helpers, but intentionally does not expose a standalone public lead endpoint or ship vertical forms.
 
 ## Source of truth
 
@@ -113,7 +113,7 @@ pnpm run d1:verify:local
 Inspect the latest records:
 
 ```sh
-pnpm wrangler d1 execute sidera-warm-modern-site --local --command \
+pnpm wrangler d1 execute sidera-nocturne-site --local --command \
 "SELECT id, kind, source, full_name, email, phone, details_json, created_at
  FROM ap_leads
  ORDER BY created_at DESC

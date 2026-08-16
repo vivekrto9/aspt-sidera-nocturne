@@ -4,7 +4,7 @@ import { requireCustomerSession } from "../../../server/aggregator/customer-auth
 import { getRuntimeEnv } from "../../../server/generated-site/request.ts";
 import { jsonResponse } from "../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.astro-chat.sessions";
+const feature = "sidera-nocturne.astro-chat.sessions";
 export const GET: APIRoute = async (context) => {
   const env = await getRuntimeEnv(context);
   const auth = await requireCustomerSession(env, context.request);

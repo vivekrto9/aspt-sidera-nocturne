@@ -9,7 +9,7 @@ import {
   errorResponse,
   jsonResponse,
 } from "../../../../../server/generated-site/responses.ts";
-const feature = "sidera-warm-modern.customer.profile";
+const feature = "sidera-nocturne.customer.profile";
 export const PATCH: APIRoute = async (context) => {
   const env = await getRuntimeEnv(context);
   const auth = await requireCustomerCsrf(env, context.request);

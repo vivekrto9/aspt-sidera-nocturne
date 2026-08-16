@@ -4,7 +4,7 @@ import { getCustomerWalletSummary, listWalletTransactions, walletOffers, walletR
 import { getRuntimeEnv } from "../../../server/generated-site/request.ts";
 import { errorResponse, jsonResponse } from "../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.wallet-summary";
+const feature = "sidera-nocturne.wallet-summary";
 export const GET: APIRoute = async (context) => {
   const env = await getRuntimeEnv(context);
   const session = await getCustomerSession(env, context.request);

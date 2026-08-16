@@ -19,7 +19,7 @@ import {
   jsonResponse,
 } from "../../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.astro-chat.session";
+const feature = "sidera-nocturne.astro-chat.session";
 export const GET: APIRoute = async (context) => {
   const env = await getRuntimeEnv(context);
   const auth = await requireCustomerSession(env, context.request);

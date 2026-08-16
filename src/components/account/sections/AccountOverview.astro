@@ -5,7 +5,7 @@ import "../../../styles/account/sections/account-overview.css";
 
 type EditAttributes = Record<string, string>;
 
-type Props = {
+export interface Props {
   dateLabel: string;
   greeting: string;
   greetingField: string;
@@ -28,7 +28,7 @@ type Props = {
   skyUnavailableDescription: string;
   hasBirthProfile: boolean;
   edit: (field: string) => EditAttributes;
-};
+}
 
 const props = Astro.props as Props;
 ---

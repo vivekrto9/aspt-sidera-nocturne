@@ -15,7 +15,7 @@ import { errorResponse, jsonResponse } from "../../../../../server/generated-sit
 
 export const prerender = false;
 
-const feature = "sidera-warm-modern.content-seo-localization.editor";
+const feature = "sidera-nocturne.content-seo-localization.editor";
 
 const emdashError = (result: unknown, fallback: string, status = 500) => {
   const error = resultError(result);

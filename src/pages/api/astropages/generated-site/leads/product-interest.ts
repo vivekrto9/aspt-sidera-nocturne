@@ -3,7 +3,7 @@ import { createLead } from "../../../../../server/aggregator/lead-records.ts";
 import { getRuntimeEnv, readJsonBody, requirePost } from "../../../../../server/generated-site/request.ts";
 import { errorResponse, jsonResponse } from "../../../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.leads.product-interest";
+const feature = "sidera-nocturne.leads.product-interest";
 const maxBodyBytes = 16_384;
 
 export const POST: APIRoute = async (context) => {

@@ -81,7 +81,7 @@ const classes = [
       download={download}
       aria-label={resolvedAriaLabel}
       aria-disabled={isDisabled ? "true" : undefined}
-      aria-busy={hasLoadingState ? String(loading === true) : undefined}
+      aria-busy={hasLoadingState ? loading === true : undefined}
       data-loading={hasLoadingState ? String(loading === true) : undefined}
       tabindex={isDisabled ? -1 : undefined}
     >
@@ -117,7 +117,7 @@ const classes = [
       form={form}
       disabled={isDisabled}
       aria-label={resolvedAriaLabel}
-      aria-busy={hasLoadingState ? String(loading === true) : undefined}
+      aria-busy={hasLoadingState ? loading === true : undefined}
       data-loading={hasLoadingState ? String(loading === true) : undefined}
     >
       {hasLeadingIcon ? (

@@ -52,7 +52,7 @@ const createReadinessDb = async ({
   }
   const bootstrapRows = bootstrapState
     ? [{
-        template_key: "sidera-warm-modern",
+        template_key: "sidera-nocturne",
         template_version: "test",
         builder_registry_hash: contract.registryHash,
         expected_collections: contract.expectedCollections,

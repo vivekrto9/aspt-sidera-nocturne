@@ -7,7 +7,7 @@ import { createWalletRecharge, recordWalletCheckout } from "../../../server/aggr
 import { getRuntimeEnv, readJsonBody, requirePost } from "../../../server/generated-site/request.ts";
 import { blockedProviderResponse, errorResponse, jsonResponse } from "../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.wallet-recharge";
+const feature = "sidera-nocturne.wallet-recharge";
 export const POST: APIRoute = async (context) => {
   const methodError = requirePost(context.request); if (methodError) return methodError;
   const env = await getRuntimeEnv(context);

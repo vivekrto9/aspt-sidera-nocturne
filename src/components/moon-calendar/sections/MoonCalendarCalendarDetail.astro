@@ -463,8 +463,15 @@ const phaseLabel = (phase: string) => {
           } else if (event.kind === "eclipse") {
             description.textContent = operational.eclipseDescription;
           } else {
+            const phaseName =
+              event.kind === "new" ||
+              event.kind === "first-quarter" ||
+              event.kind === "full" ||
+              event.kind === "last-quarter"
+                ? runtime.phaseNames[event.kind]
+                : "";
             description.textContent = fill(operational.phaseEventDescriptionTemplate, {
-              phase: runtime.phaseNames[event.kind],
+              phase: phaseName,
             });
           }
           time.dateTime = event.moment;

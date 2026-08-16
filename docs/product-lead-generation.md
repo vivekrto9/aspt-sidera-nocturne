@@ -59,10 +59,10 @@ Open `http://localhost:4321/lead-generation-demo` and submit the form.
 
 ### Check the latest five leads
 
-Run this from the `sidera-warm-modern` directory:
+Run this from the `sidera-nocturne` directory:
 
 ```sh
-pnpm wrangler d1 execute sidera-warm-modern-site --local --command \
+pnpm wrangler d1 execute sidera-nocturne-site --local --command \
 "SELECT id, status, full_name, email, phone, source, form_key, page_path, created_at
  FROM ap_leads
  ORDER BY created_at DESC

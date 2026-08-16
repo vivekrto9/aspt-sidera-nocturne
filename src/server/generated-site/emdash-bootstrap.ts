@@ -30,7 +30,7 @@ type BatchStatement = readonly [sql: string, values?: readonly unknown[]];
 const activeLocaleCodes = activeLocales.map(
   (locale) => locale.code,
 ) as SupportedLocale[];
-const bootstrapTemplateKey = "sidera-warm-modern";
+const bootstrapTemplateKey = "sidera-nocturne";
 const bootstrapStateTable = "ap_emdash_bootstrap_state";
 const blogPostCollection = templateSeed.collections.find((collection) => collection.slug === "posts");
 const blogPostEntries = templateSeed.content.posts ?? [];

@@ -5,7 +5,7 @@ import { errorResponse, jsonResponse } from "../../../../../server/generated-sit
 import { requireContentReleaseServiceAuth } from "../../../../../server/generated-site/content-release-auth.ts";
 
 export const prerender = false;
-const feature = "sidera-warm-modern.project-assets.export";
+const feature = "sidera-nocturne.project-assets.export";
 
 export const POST: APIRoute = async (context) => {
   const auth = await requireContentReleaseServiceAuth(context, feature);
@@ -16,7 +16,7 @@ export const POST: APIRoute = async (context) => {
       state: "ready",
       feature,
       message: "Project asset snapshot is ready.",
-      data: await buildAssetSnapshot({ env: auth.env, templateKey: "sidera-warm-modern" }),
+      data: await buildAssetSnapshot({ env: auth.env, templateKey: "sidera-nocturne" }),
     });
   } catch (error) {
     return errorResponse(feature, error instanceof Error ? error.message : "Asset export failed.", 500);

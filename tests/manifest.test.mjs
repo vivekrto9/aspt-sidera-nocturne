@@ -8,9 +8,9 @@ const leadsManifest = JSON.parse(readFileSync(new URL("../astropages/leads.manif
 
 const routePaths = (items) => new Set(items.map((item) => item.path));
 
-test("template manifest keeps Sidera Warm Modern identity", () => {
-  assert.equal(manifest.templateKey, "sidera-warm-modern");
-  assert.equal(manifest.displayName, "Sidera Warm Modern");
+test("template manifest keeps Sidera Nocturne identity", () => {
+  assert.equal(manifest.templateKey, "sidera-nocturne");
+  assert.equal(manifest.displayName, "Sidera Nocturne");
   assert.equal(Object.hasOwn(manifest, "version"), false);
   assert.equal(Object.hasOwn(manifest, "registryVersionId"), false);
   assert.equal(manifest.analytics.required, true);
@@ -141,7 +141,7 @@ test("leads manifest exposes the canonical reusable sources", () => {
 });
 
 test("analytics manifest is base-specific and read-only", () => {
-  assert.equal(analyticsManifest.templateKey, "sidera-warm-modern");
+  assert.equal(analyticsManifest.templateKey, "sidera-nocturne");
   const queries = JSON.stringify(analyticsManifest.queries ?? []);
   assert.match(queries, /\bSELECT\b|\bWITH\b/i);
   assert.doesNotMatch(queries, /\b(INSERT|UPDATE|DELETE|DROP|ALTER|CREATE|REPLACE|TRUNCATE)\b/i);

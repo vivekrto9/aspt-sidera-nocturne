@@ -37,10 +37,11 @@ test("MediaThumbnail shows the label pill only for fallback media", async () => 
   assert.match(source, /alt=\{decorative \? "" : alt\}/);
 });
 
-test("MediaThumbnail styles a responsive striped fallback and label pill", async () => {
+test("MediaThumbnail styles a responsive theme-token fallback and label pill", async () => {
   const styles = await readFile(stylesheetPath, "utf8");
 
-  assert.match(styles, /repeating-linear-gradient/);
+  assert.match(styles, /background-image: var\(--image-fallback-pattern\)/);
+  assert.match(styles, /background-size: var\(--image-fallback-pattern-size\)/);
   assert.match(styles, /border-radius: 999px/);
   assert.match(styles, /align-items: end/);
   assert.match(styles, /text-overflow: ellipsis/);

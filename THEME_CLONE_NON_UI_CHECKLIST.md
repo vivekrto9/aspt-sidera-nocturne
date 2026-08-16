@@ -297,3 +297,51 @@ The initial audit found these runtime table groups absent:
 Likely symptoms include wallet/chat/history/account overview, checkout/purchase history, report purchase, scheduling, or cached horoscope/astrology requests failing with `no such table` errors. Do not work around this in UI or API code. Compare the physical D1 schema with `src/server/aggregator/db/tables.ts`, inspect the migration ledger, and apply the canonical migrations in a controlled environment-specific sequence. Verify local, preview, and production independently.
 
 For this local Meridian repair, the canonical schemas from migrations `0111`, `0113` through `0117`, `0119`, `0136`, and the table-only portion of `0146` plus the `0153` partner-profile column were restored. A follow-up inventory found no missing runtime table from `src/server/aggregator/db/tables.ts`, and direct commerce-order, session-entitlement, and wallet-transaction queries succeeded. This is still local-only D1 state; preview and production require their own migration audit and controlled application.
+
+## 18. Generated asset data requires both R2 and D1
+
+Creating `ap_asset_aliases`, `ap_asset_records`, and `ap_asset_revisions` fixes only the schema. The generated asset route also needs the binary objects in the configured R2 bucket and matching D1 metadata rows. A table-only repair can therefore remove `no such table` while every image still fails.
+
+For a local clone:
+
+1. Use the repository's project-asset seed command in explicit local mode.
+2. Point it at the root `wrangler.jsonc`, pass `--local`, and upload serially because parallel Miniflare writes can contend on the local SQLite lock.
+3. Store the local release row with an environment allowed by the schema (`preview` in the current contract).
+4. Verify equal alias/record/revision counts and request at least one alias over HTTP; require the expected image content type and non-empty bytes.
+
+Do not confuse `.wrangler/state/v3/d1/miniflare-D1DatabaseObject/metadata.sqlite` with the project D1 database. Resolve the database file by its actual schema/tables instead of selecting the first `.sqlite` path.
+
+## 19. Runtime identity must be changed beyond package metadata
+
+A clone may build while still identifying itself as the source theme. Audit all runtime-facing identifiers, including:
+
+- `data-site-source` and other source markers in the base layout
+- locale/local-storage namespaces
+- Content Studio feature IDs and release/asset keys
+- API callbacks and example URLs
+- test fixtures, operational scripts, manifests, workflows, and docs
+
+Search the whole repository for the previous theme slug after the rename. Keep intentional historical references only inside troubleshooting documentation.
+
+## 20. Build success is not typecheck success
+
+The Cloudflare Astro integration may need a local inspector port during `astro check`; a restricted sandbox can make the command appear to hang or fail before diagnostics. Run the checker in an environment where its local inspector port is permitted. Do not use a successful production build as a substitute for typechecking.
+
+Shared component contracts should use supported props and DOM attribute types. In Nocturne this caught invalid loading-indicator syntax, stringified `aria-busy` values, an incomplete transit locale type, a moon-event union narrowing issue, form-element typing, and an ambiguous provider-header return type.
+
+## 21. Theme-aware fallbacks and tests
+
+Static image fallbacks must use shared theme tokens rather than a literal fallback copied from another theme. Contract tests should assert the shared theme-token contract, not one theme's exact gradient or color values. Distinguish a bundled visual fallback from a static astrology-data fallback: decorative media is allowed, but calculated readings and provider responses must remain dynamic.
+
+## 22. Nocturne local clone completion record
+
+The Nocturne local drill required the same explicit repair sequence as Meridian:
+
+- materialize all runtime D1 tables and validate them against `src/server/aggregator/db/tables.ts`
+- complete the authenticated Content Studio bootstrap for all 48 targets / 46 collections and seven locales
+- seed 33 generated assets into local R2 plus their D1 alias/record/revision metadata
+- seed the intended two-astrologer chat catalog
+- copy ignored local secrets securely and compare variable names with the source without exposing values
+- verify public routes, authenticated redirects, deep edit readiness, schema/Cloudflare/asset/sales/user/secrets contracts, safety scan, typecheck, tests, and build
+
+These steps repair local development only. Preview and production still require their own secrets, controlled migrations/bootstrap, asset seeding, and route verification.

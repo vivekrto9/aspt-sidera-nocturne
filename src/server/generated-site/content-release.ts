@@ -47,7 +47,7 @@ export type ContentSnapshotEntry = {
 
 export type ContentReleaseSnapshot = {
   schemaVersion: 1;
-  templateKey: "sidera-warm-modern";
+  templateKey: "sidera-nocturne";
   environment: "preview" | "production";
   contentRevision: number;
   snapshotHash: string;
@@ -642,7 +642,7 @@ export const buildContentReleaseSnapshot = async ({
     (await sha256Hex({ entries }));
   const snapshotWithoutHash = {
     schemaVersion: 1 as const,
-    templateKey: "sidera-warm-modern" as const,
+    templateKey: "sidera-nocturne" as const,
     environment,
     contentRevision,
     contentHash,

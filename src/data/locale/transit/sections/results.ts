@@ -33,7 +33,7 @@ type TransitResultsCoreCopy = {
 export type TransitResultsCopy = TransitResultsCoreCopy &
   TransitYearAheadHandoffCopy;
 
-const en: TransitResultsCopy = {
+const en: TransitResultsCoreCopy = {
   results_eyebrow: "Transit Chart",
   results_title_prefix: "Transits to",
   results_natal_label: "Natal",

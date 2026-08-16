@@ -12,7 +12,7 @@ import {
   jsonResponse,
 } from "../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.astro-chat.create-session";
+const feature = "sidera-nocturne.astro-chat.create-session";
 export const POST: APIRoute = async (context) => {
   const methodError = requirePost(context.request);
   if (methodError) return methodError;

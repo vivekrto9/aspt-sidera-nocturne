@@ -26,7 +26,7 @@ export type BuilderAccess = BuilderAccessResult;
 
 const allowedRoles = new Set<BuilderRole>(["owner", "admin", "editor"]);
 const publisherRoles = new Set<BuilderRole>(["owner", "admin"]);
-export const builderCsrfToken = "sidera-warm-modern-builder";
+export const builderCsrfToken = "sidera-nocturne-builder";
 const isDevRuntime = () =>
   Boolean((import.meta as unknown as { env?: { DEV?: boolean } }).env?.DEV);
 

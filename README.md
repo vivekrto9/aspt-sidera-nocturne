@@ -1,4 +1,4 @@
-# aspt-sidera-nocturne
+# Sidera Nocturne
 
 `aspt-sidera-nocturne` is the Nocturne Sidera theme built on AstroPages. It preserves the reusable Astro, Cloudflare, EmDash, authentication, lead, asset, and deployment infrastructure inherited from the proven Sidera base.
 

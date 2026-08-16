@@ -41,7 +41,9 @@ export const resolveAstrologyApiBaseUrl = async (env: RuntimeEnv) => {
   return value;
 };
 
-export const resolveAstrologyApiRequestHeaders = async (env: RuntimeEnv) => {
+export const resolveAstrologyApiRequestHeaders = async (
+  env: RuntimeEnv,
+): Promise<Record<string, string>> => {
   const [userId, password] = await Promise.all([
     resolveOptionalSecret(env, astrologyApiRuntimeNames.userId),
     resolveOptionalSecret(env, astrologyApiRuntimeNames.password),

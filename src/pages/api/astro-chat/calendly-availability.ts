@@ -8,7 +8,7 @@ import {
   jsonResponse,
 } from "../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.calendly-availability";
+const feature = "sidera-nocturne.calendly-availability";
 export const GET: APIRoute = async (context) => {
   const env = await getRuntimeEnv(context);
   const result = await listScheduledAvailability({

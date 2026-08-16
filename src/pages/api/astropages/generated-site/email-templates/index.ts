@@ -15,7 +15,7 @@ import {
 } from "../../../../../server/generated-site/responses.ts";
 
 export const prerender = false;
-const feature = "sidera-warm-modern.generated-site-operations.email-templates";
+const feature = "sidera-nocturne.generated-site-operations.email-templates";
 
 export const GET: APIRoute = async (context) => {
   const auth = await requireContentReleaseServiceAuth(context, feature);

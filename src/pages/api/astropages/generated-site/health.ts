@@ -7,7 +7,7 @@ export const GET: APIRoute = async () =>
     JSON.stringify({
       status: "ready",
       state: "ready",
-      feature: "sidera-warm-modern.generated-site.health",
+      feature: "sidera-nocturne.generated-site.health",
     }),
     {
       status: 200,

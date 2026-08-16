@@ -31,7 +31,7 @@ import {
 } from "../../../../../../server/generated-site/request.ts";
 import { jsonResponse } from "../../../../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.payment-webhook.stripe";
+const feature = "sidera-nocturne.payment-webhook.stripe";
 const actionableEvents = new Set([
   "checkout.session.completed",
   "checkout.session.async_payment_succeeded",

@@ -16,7 +16,7 @@ import {
   errorResponse,
   jsonResponse,
 } from "../../../../../server/generated-site/responses.ts";
-const feature = "sidera-warm-modern.customer.user-profiles";
+const feature = "sidera-nocturne.customer.user-profiles";
 export const GET: APIRoute = async (context) => {
   const env = await getRuntimeEnv(context);
   const auth = await requireCustomerSession(env, context.request);

@@ -10,7 +10,7 @@ import { errorResponse, jsonResponse } from "../../../../../server/generated-sit
 
 export const prerender = false;
 
-const feature = "sidera-warm-modern.content-editor.mcp-token";
+const feature = "sidera-nocturne.content-editor.mcp-token";
 const systemUserEmail = "builder-mcp@astropages.local";
 const systemUserName = "AstroPages Builder MCP";
 const adminRole = 50;

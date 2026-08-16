@@ -8,7 +8,7 @@ import {
   jsonResponse,
 } from "../../../../../../server/generated-site/responses.ts";
 
-const feature = "sidera-warm-modern.report-order-status";
+const feature = "sidera-nocturne.report-order-status";
 export const GET: APIRoute = async (context) => {
   const env = await getRuntimeEnv(context);
   const auth = await requireCustomerSession(env, context.request);
