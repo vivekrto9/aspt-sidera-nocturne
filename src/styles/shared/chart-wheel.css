@@ -37,13 +37,13 @@
 }
 
 .chart-wheel--inverse {
-  --chart-disc-outer: rgba(240, 230, 214, 0.05);
-  --chart-disc-signs: rgba(240, 230, 214, 0.08);
-  --chart-disc-inner: rgba(240, 230, 214, 0.04);
-  --chart-line: rgba(240, 230, 214, 0.2);
-  --chart-line-soft: rgba(240, 230, 214, 0.13);
+  --chart-disc-outer: rgba(237, 234, 248, 0.05);
+  --chart-disc-signs: rgba(176, 140, 240, 0.1);
+  --chart-disc-inner: rgba(237, 234, 248, 0.04);
+  --chart-line: rgba(237, 234, 248, 0.2);
+  --chart-line-soft: rgba(237, 234, 248, 0.13);
   --chart-accent: var(--color-primary-soft);
-  --chart-glyph: #d6a37b;
+  --chart-glyph: var(--color-primary-soft);
   --chart-planet-fill: var(--color-dark-strong);
   --chart-caption: var(--color-line);
 }

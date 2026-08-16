@@ -19,8 +19,8 @@
 
 .sidera-profile-summary--inverse {
   --profile-summary-name: var(--color-surface-soft);
-  --profile-summary-copy: #cbb09b;
-  --profile-summary-muted: #b99e88;
+  --profile-summary-copy: var(--color-on-dark-muted);
+  --profile-summary-muted: var(--color-on-dark-muted);
 }
 
 .sidera-profile-summary__avatar {

@@ -10,7 +10,7 @@
   --sidera-button-block-size: 2.875rem;
   --sidera-button-inline-padding: 1.375rem;
   --sidera-button-font-size: 0.875rem;
-  --sidera-button-radius: 999px;
+  --sidera-button-radius: 0.625rem;
 
   min-block-size: var(--sidera-button-block-size);
   max-inline-size: 100%;
@@ -41,6 +41,7 @@
   border-color: var(--sidera-button-hover-border);
   background: var(--sidera-button-hover-background);
   color: var(--sidera-button-hover-color);
+  transform: translateY(-0.125rem);
 }
 
 .sidera-button:active:not(:disabled):not([aria-disabled="true"]) {
@@ -193,5 +194,9 @@
 @media (prefers-reduced-motion: reduce) {
   .sidera-button {
     transition: none;
+  }
+
+  .sidera-button:hover {
+    transform: none;
   }
 }

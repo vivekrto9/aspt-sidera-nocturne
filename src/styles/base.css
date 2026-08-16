@@ -1,47 +1,48 @@
 :root {
   color-scheme: light;
-  --color-bg: #eef1ec;
-  --color-panel: #fbfcfa;
-  --color-surface: #e4e9e1;
-  --color-surface-soft: #f3f6f1;
-  --color-text: #1f3a34;
-  --color-muted: #4a574e;
-  --color-muted-soft: #5b6a60;
-  --color-line: #cfd8cf;
-  --color-primary: #9b5273;
-  --color-primary-strong: #80415f;
-  --color-primary-soft: #d392aa;
-  --color-primary-pale: #e9a9bf;
-  --color-dark: #16261f;
-  --color-dark-strong: #122019;
-  --color-on-dark: #e7efe7;
-  --color-on-dark-strong: #f1f5ee;
-  --color-on-dark-muted: #a9bdb0;
-  --color-success: #3f7a6e;
-  --color-info: #4a6a8a;
-  --color-danger: #9c3f52;
-  --color-danger-soft: #f5e7ec;
+  --color-bg: #eceaf6;
+  --color-panel: #faf9ff;
+  --color-surface: #e3e0f0;
+  --color-surface-soft: #f2f0f8;
+  --color-text: #1b1730;
+  --color-muted: #574f70;
+  --color-muted-soft: #6c6482;
+  --color-line: #cbc6dd;
+  --color-primary: #b08cf0;
+  --color-primary-strong: #7c5ebc;
+  --color-primary-soft: #c6abfa;
+  --color-primary-pale: #ddcffc;
+  --color-dark: #171429;
+  --color-dark-strong: #0b0914;
+  --color-on-dark: #edeaf8;
+  --color-on-dark-strong: #f3f0ff;
+  --color-on-dark-muted: #aaa3c5;
+  --color-success: #5fc2d6;
+  --color-info: #6ea9d7;
+  --color-danger: #c86b8a;
+  --color-danger-soft: #f6e8ef;
   --color-white: #ffffff;
-  --color-text-rgb: 31, 58, 52;
-  --color-primary-rgb: 155, 82, 115;
-  --color-dark-rgb: 22, 38, 31;
-  --color-surface-rgb: 228, 233, 225;
+  --color-text-rgb: 27, 23, 48;
+  --color-primary-rgb: 176, 140, 240;
+  --color-dark-rgb: 23, 20, 41;
+  --color-surface-rgb: 227, 224, 240;
   --image-fallback-background: var(--color-surface);
   --image-fallback-pattern:
-    linear-gradient(145deg, rgba(var(--color-primary-rgb), 0.1), transparent 58%),
+    radial-gradient(circle at 22% 18%, rgba(95, 194, 214, 0.2), transparent 30%),
+    linear-gradient(145deg, rgba(var(--color-primary-rgb), 0.2), transparent 58%),
     radial-gradient(
       circle at 0.125rem 0.125rem,
       rgba(var(--color-primary-rgb), 0.22) 0 0.0625rem,
       transparent 0.078125rem
     );
-  --image-fallback-pattern-size: 100% 100%, 1.5rem 1.5rem;
+  --image-fallback-pattern-size: 100% 100%, 100% 100%, 1.5rem 1.5rem;
   --image-fallback-label-background: color-mix(
     in srgb,
     var(--color-panel) 90%,
     transparent
   );
-  --font-sans: "Karla", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "Spectral", Georgia, "Times New Roman", serif;
 }
 
 * {

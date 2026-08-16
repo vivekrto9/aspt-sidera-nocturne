@@ -64,15 +64,15 @@
   flex: none;
   overflow: visible;
   box-shadow:
-    0 0 3.375rem rgba(248, 240, 223, 0.4),
-    inset -0.625rem -0.625rem 1.625rem rgba(95, 72, 46, 0.4);
+    0 0 3.375rem rgba(176, 140, 240, 0.34),
+    inset -0.625rem -0.625rem 1.625rem rgba(95, 194, 214, 0.22);
   border-radius: 50%;
   animation: home-moon-calendar-glow 4.8s ease-in-out infinite;
 }
 
 .home-moon-calendar__moon-disc {
-  fill: #1f130f;
-  stroke: rgba(245, 234, 216, 0.2);
+  fill: var(--color-dark);
+  stroke: rgba(198, 171, 250, 0.26);
 }
 
 .home-moon-calendar__moon-light {
@@ -108,17 +108,17 @@
 }
 
 .home-moon-calendar__cta {
-  --sidera-button-focus: rgba(224, 160, 110, 0.58);
+  --sidera-button-focus: rgba(176, 140, 240, 0.58);
   margin-block-start: 1rem;
 }
 
 .home-moon-calendar__unavailable {
   max-inline-size: 30rem;
   margin-block-start: 2.125rem;
-  border: 1px solid rgba(245, 234, 216, 0.14);
+  border: 1px solid rgba(198, 171, 250, 0.16);
   border-radius: 0.875rem;
   padding: 1.5rem;
-  background: rgba(245, 234, 216, 0.06);
+  background: rgba(198, 171, 250, 0.06);
 }
 
 .home-moon-calendar__unavailable h3,
@@ -161,10 +161,10 @@
 
 .home-moon-calendar__events article {
   min-inline-size: 0;
-  border: 1px solid rgba(245, 234, 216, 0.14);
+  border: 1px solid rgba(198, 171, 250, 0.16);
   border-radius: 0.875rem;
   padding: 1.125rem;
-  background: rgba(245, 234, 216, 0.06);
+  background: rgba(198, 171, 250, 0.06);
 }
 
 .home-moon-calendar__events p {

@@ -74,9 +74,9 @@
   flex: none;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(211, 146, 170, 0.4);
+  border: 1px solid rgba(176, 140, 240, 0.4);
   border-radius: 50%;
-  background: rgba(211, 146, 170, 0.16);
+  background: rgba(176, 140, 240, 0.16);
   color: var(--color-primary-pale);
   font: 400 1.875rem / 1 Georgia, serif;
 }
@@ -120,7 +120,7 @@
   min-block-size: auto;
   margin-block-start: 1.5rem;
   padding: 0 0 0.125rem;
-  border-block-end-color: rgba(211, 146, 170, 0.5);
+  border-block-end-color: rgba(176, 140, 240, 0.5);
   border-radius: 0;
 }
 

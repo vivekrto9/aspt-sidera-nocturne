@@ -44,9 +44,18 @@ const {
 const titleWords = title.trim().split(/\s+/);
 const titleAccent = titleWords.shift() ?? "";
 const titleRemainder = titleWords.join(" ");
+const zodiacGlyphs = ["♈", "♉", "♊", "♋", "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓"];
 ---
 
 <section class="home-hero" id="top" aria-labelledby="home-hero-title">
+  <div class="home-hero__zodiac" aria-hidden="true">
+    {
+      zodiacGlyphs.map((glyph, index) => (
+        <span style={`--zodiac-index: ${index}`}>{glyph}</span>
+      ))
+    }
+    <i></i>
+  </div>
   <div class="home-hero__inner">
     <div class="home-hero__content">
       <p class="home-hero__kicker" {...kickerEditAttributes}>{kicker}</p>

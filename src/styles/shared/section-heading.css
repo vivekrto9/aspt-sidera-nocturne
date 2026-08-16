@@ -36,8 +36,8 @@
 .sidera-section-heading__title {
   margin: 0;
   color: var(--sidera-section-heading-ink);
-  font: 400 var(--sidera-section-heading-title-size) / 1 var(--font-serif);
-  letter-spacing: -0.01em;
+  font: 650 var(--sidera-section-heading-title-size) / 0.98 var(--font-sans);
+  letter-spacing: -0.045em;
   text-wrap: balance;
   overflow-wrap: anywhere;
 }
@@ -52,7 +52,9 @@
 
 .sidera-section-heading__title :where(em) {
   color: var(--sidera-section-heading-accent);
+  font-family: var(--font-serif);
   font-style: italic;
+  font-weight: 400;
 }
 
 .sidera-section-heading__description {
