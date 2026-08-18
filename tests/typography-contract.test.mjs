@@ -27,14 +27,14 @@ const visitorStyles = (directory = stylesRoot) => {
   return files;
 };
 
-test("Meridian loads and declares one canonical visitor typography pair", () => {
+test("Nocturne loads and declares one canonical visitor typography pair", () => {
   const layout = read("src/layouts/BaseLayout.astro");
   const base = read("src/styles/base.css");
 
-  assert.match(layout, /family=DM\+Serif\+Display:ital@0;1/);
-  assert.match(layout, /family=Karla:wght@400;500;600;700/);
-  assert.match(base, /--font-sans: "Karla", ui-sans-serif/);
-  assert.match(base, /--font-serif: "DM Serif Display", Georgia/);
+  assert.match(layout, /family=Bricolage\+Grotesque/);
+  assert.match(layout, /family=Spectral/);
+  assert.match(base, /--font-sans: "Bricolage Grotesque", ui-sans-serif/);
+  assert.match(base, /--font-serif: "Spectral", Georgia/);
   assert.match(base, /body \{[\s\S]*font-family: var\(--font-sans\)/);
   assert.match(base, /h1 \{[\s\S]*font-family: var\(--font-serif\)/);
 });
