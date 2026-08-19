@@ -67,6 +67,11 @@
 
 .account-people__chart .chart-wheel {
   --chart-wheel-size: 7.5rem;
+  --chart-disc-outer: rgba(var(--color-primary-rgb), 0.05);
+  --chart-disc-signs: rgba(var(--color-primary-rgb), 0.09);
+  --chart-disc-inner: var(--color-panel);
+  --chart-planet-fill: var(--color-panel);
+  --chart-glyph: var(--color-primary-strong);
 }
 
 .account-people__chart--linked {

@@ -128,15 +128,21 @@
     color 150ms ease;
 }
 
-.sidera-language-dropdown__option:hover {
-  background: rgba(var(--color-text-rgb), 0.06);
+.sidera-language-dropdown__option:not(.sidera-language-dropdown__option--selected):hover {
+  background: rgba(var(--color-primary-rgb), 0.1);
   color: var(--sidera-language-ink);
 }
 
 .sidera-language-dropdown__option--selected {
-  background: var(--color-surface);
+  background: rgba(var(--color-primary-rgb), 0.16);
   color: var(--sidera-language-ink);
   font-weight: 700;
+  cursor: default;
+}
+
+.sidera-language-dropdown__option--selected:hover {
+  background: rgba(var(--color-primary-rgb), 0.16);
+  color: var(--sidera-language-ink);
 }
 
 .sidera-language-dropdown__option[aria-disabled="true"] {

@@ -1,5 +1,5 @@
 .sidera-search-field {
-  --search-field-background: #ffffff;
+  --search-field-background: var(--color-surface);
   --search-field-border: rgba(var(--color-text-rgb), 0.18);
   --search-field-hover-border: rgba(var(--color-text-rgb), 0.34);
   --search-field-focus-border: var(--color-primary);
@@ -103,7 +103,7 @@
 
 .sidera-search-field__clear :where(.icon-button) {
   --icon-button-color: var(--color-muted);
-  --icon-button-hover-background: #f3ecdf;
+  --icon-button-hover-background: var(--color-surface);
 }
 
 @media (max-width: 40rem) {

@@ -8,6 +8,7 @@
 
   inline-size: 100%;
   padding: 4.5rem 2.125rem 2.5rem;
+  border-block-start: 1px solid rgba(237, 234, 248, 0.08);
   background: var(--footer-background);
   color: var(--footer-color);
   font-family: var(--font-sans);

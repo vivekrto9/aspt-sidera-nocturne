@@ -193,6 +193,13 @@
   display: inline-flex;
 }
 
+.sidera-header :is(.sidera-header__action, .sidera-header__mobile-actions) .sidera-button--ghost,
+.sidera-header :is(.sidera-header__action, .sidera-header__mobile-actions) .sidera-button--link {
+  --sidera-button-color: var(--sidera-header-muted);
+  --sidera-button-hover-background: rgba(237, 234, 248, 0.08);
+  --sidera-button-hover-color: var(--sidera-header-accent);
+}
+
 .sidera-header__action .sidera-button__label {
   display: inline-flex;
   align-items: center;

@@ -53,8 +53,9 @@
   overflow: hidden;
   border: 1px solid rgba(var(--color-text-rgb), 0.16);
   border-radius: 0.75rem;
-  background: #ffffff;
-  box-shadow: 0 1.25rem 2.75rem -1.375rem rgba(var(--color-text-rgb), 0.5);
+  background: var(--color-dark, #171429);
+  color: var(--color-on-dark, #edeaf8);
+  box-shadow: 0 1.25rem 2.75rem -1.375rem rgba(0, 0, 0, 0.75);
 }
 
 .sidera-location-autocomplete__popover[hidden] {
@@ -78,8 +79,8 @@
   align-items: center;
   gap: 0.625rem;
   padding: 0.6875rem 0.9375rem;
-  border-block-end: 1px solid rgba(var(--color-text-rgb), 0.07);
-  color: var(--color-text);
+  border-block-end: 1px solid rgba(237, 234, 248, 0.08);
+  color: var(--color-on-dark, #edeaf8);
   cursor: pointer;
   transition:
     background-color 140ms ease,
@@ -92,11 +93,11 @@
 
 .sidera-location-autocomplete__option:hover,
 .sidera-location-autocomplete__option[data-active="true"] {
-  background: var(--color-surface-soft);
+  background: rgba(237, 234, 248, 0.08);
 }
 
 .sidera-location-autocomplete__option[aria-selected="true"] {
-  color: var(--color-dark);
+  color: var(--color-primary-soft);
 }
 
 .sidera-location-autocomplete__option-icon {
@@ -125,7 +126,7 @@
 }
 
 .sidera-location-autocomplete__option-secondary {
-  color: var(--color-muted-soft);
+  color: var(--color-on-dark-muted, #aaa3c5);
   font-size: 0.75rem;
   line-height: 1.35;
 }

@@ -215,13 +215,29 @@
   background: rgba(237, 234, 248, 0.06);
 }
 
+.sidera-home .home-birth-chart__form .sidera-select-field,
+.sidera-home .home-birth-chart__form .sidera-text-field,
+.sidera-home .home-birth-chart__form .sidera-location-autocomplete .sidera-location-autocomplete__input {
+  --text-field-background: rgba(19, 17, 31, 0.5);
+  --text-field-border: rgba(237, 234, 248, 0.16);
+  --text-field-color: var(--color-on-dark);
+  --text-field-placeholder: var(--color-on-dark-muted);
+  --select-field-background: rgba(19, 17, 31, 0.5);
+  --select-field-border: rgba(237, 234, 248, 0.16);
+  --select-field-color: var(--color-on-dark);
+  background: rgba(19, 17, 31, 0.5);
+  border-color: rgba(237, 234, 248, 0.16);
+  color: var(--color-on-dark);
+}
+
 .sidera-home .home-birth-chart__wheel .chart-wheel {
-  --chart-disc-outer: rgba(237, 234, 248, 0.04);
+  --chart-disc-outer: rgba(19, 17, 31, 0.4);
   --chart-disc-signs: rgba(176, 140, 240, 0.08);
   --chart-disc-inner: rgba(237, 234, 248, 0.035);
   --chart-line: rgba(237, 234, 248, 0.2);
   --chart-line-soft: rgba(237, 234, 248, 0.12);
   --chart-glyph: var(--color-primary-soft);
+  --chart-planet-fill: var(--color-dark);
   --chart-caption: var(--color-on-dark-muted);
 }
 
@@ -236,9 +252,12 @@
   color: var(--color-dark-strong);
 }
 
-.sidera-home .home-moon-calendar,
-.sidera-home .home-final-cta {
+.sidera-home .home-moon-calendar {
   background: var(--color-dark-strong);
+}
+
+.sidera-home .home-final-cta {
+  background: radial-gradient(110% 130% at 50% 0%, #2a2247 0%, #13111f 70%);
 }
 
 .sidera-home .home-daily-horoscope__reading {
@@ -251,7 +270,41 @@
 }
 
 .sidera-home .home-reports__card {
+  border: 1px solid rgba(237, 234, 248, 0.12);
+  border-radius: 1.125rem;
+  background: rgba(237, 234, 248, 0.04);
+  color: var(--color-on-dark);
   box-shadow: 0 1.5rem 3rem -2rem rgba(0, 0, 0, 0.7);
+}
+
+.sidera-home .home-reports__card:hover {
+  border-color: rgba(176, 140, 240, 0.4);
+  transform: translateY(-0.25rem);
+}
+
+.sidera-home .home-reports__card .sidera-report-card__metadata {
+  color: var(--color-success);
+}
+
+.sidera-home .home-reports__card .sidera-report-card__title {
+  color: var(--color-on-dark-strong);
+}
+
+.sidera-home .home-reports__card .sidera-report-card__description {
+  color: var(--color-on-dark-muted);
+}
+
+.sidera-home .home-reports__card .sidera-price-display__current {
+  color: var(--color-on-dark-strong);
+}
+
+.sidera-home .home-reports__card .sidera-button--outline {
+  --sidera-button-border: rgba(237, 234, 248, 0.24);
+  --sidera-button-color: var(--color-on-dark);
+  --sidera-button-hover-background: var(--color-primary);
+  --sidera-button-hover-color: var(--color-dark-strong);
+  --sidera-button-hover-border: var(--color-primary);
+  border-radius: 999px;
 }
 
 .sidera-home .home-reports__action .sidera-button--outline {

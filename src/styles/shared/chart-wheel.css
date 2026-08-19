@@ -6,7 +6,7 @@
   --chart-line: rgba(var(--color-text-rgb), 0.14);
   --chart-line-soft: rgba(var(--color-text-rgb), 0.1);
   --chart-accent: var(--color-primary);
-  --chart-glyph: var(--color-muted);
+  --chart-glyph: var(--color-primary-strong);
   --chart-planet-fill: var(--color-panel);
   --chart-planet-outer-fill: var(--color-dark);
   --chart-planet-outer-text: var(--color-surface);

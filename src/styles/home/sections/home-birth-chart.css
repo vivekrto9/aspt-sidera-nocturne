@@ -88,7 +88,7 @@
 .home-birth-chart__form .sidera-text-field {
   min-block-size: 2.75rem;
   border-radius: 0.625rem;
-  background: var(--color-white);
+  background: var(--color-surface);
 }
 
 .home-birth-chart__form .sidera-time-selector__unknown {

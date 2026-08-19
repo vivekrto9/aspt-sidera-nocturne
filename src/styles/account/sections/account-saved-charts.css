@@ -72,6 +72,11 @@
 
 .account-saved-charts__wheel {
   --chart-wheel-size: 5.375rem;
+  --chart-disc-outer: rgba(var(--color-primary-rgb), 0.05);
+  --chart-disc-signs: rgba(var(--color-primary-rgb), 0.09);
+  --chart-disc-inner: var(--color-panel);
+  --chart-planet-fill: var(--color-panel);
+  --chart-glyph: var(--color-primary-strong);
 
   flex: 0 0 5.375rem;
 }

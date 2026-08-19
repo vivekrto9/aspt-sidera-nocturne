@@ -1,12 +1,12 @@
 .sidera-planet-position-row {
   --planet-row-background: transparent;
-  --planet-row-hover: #f3ecdf;
+  --planet-row-hover: var(--color-surface-soft);
   --planet-row-selected: var(--color-surface-soft);
   --planet-row-border: rgba(var(--color-text-rgb), 0.1);
   --planet-row-text: var(--color-text);
   --planet-row-muted: var(--color-muted);
   --planet-row-glyph-background: rgba(var(--color-text-rgb), 0.06);
-  --planet-row-glyph: #7a5142;
+  --planet-row-glyph: var(--color-primary-strong);
   --planet-row-focus: rgba(var(--color-primary-rgb), 0.36);
 
   inline-size: 100%;

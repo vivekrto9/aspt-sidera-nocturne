@@ -5,6 +5,7 @@ import Avatar from "../../shared/Avatar.astro";
 import Button from "../../shared/Button.astro";
 import Dialog from "../../shared/Dialog.astro";
 import IconButton from "../../shared/IconButton.astro";
+import { cleanMarkdownSummary } from "../../../scripts/render-safe-markdown.ts";
 import "../../../styles/astrologers/shared/chat-history.css";
 
 type EditAttributes = Record<string, string>;
@@ -165,7 +166,8 @@ const deleteCopy = {
         const active = session.id === activeSessionId;
         const name = session.astrologerName || astrologer.name;
         const context = profileLabel(session) || name;
-        const title = session.lastMessage || `${copy.chatsLabel} · ${name}`;
+        const rawTitle = session.lastMessage || `${copy.chatsLabel} · ${name}`;
+        const title = cleanMarkdownSummary(rawTitle);
         return (
           <article class:list={["astrologer-chat-history__item", active && "is-active"]} data-chat-history-session={session.id} data-chat-history-active={active ? "true" : "false"} data-chat-paginated-item>
             <a href={chatHref(session.id)} aria-current={active ? "page" : undefined}>

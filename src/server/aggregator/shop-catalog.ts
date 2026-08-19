@@ -145,11 +145,12 @@ export const listShopProducts = async (
     const result = await env.DB.prepare(
       `${selectColumns} WHERE active = 1 ORDER BY sort_order ASC, slug ASC`,
     ).all?.<ShopProductRow>();
-    return (result?.results ?? [])
+    const rows = (result?.results ?? [])
       .map((row) => normalizeRow(row, locale))
       .filter(Boolean) as ShopProduct[];
+    return rows.length > 0 ? rows : localFallback(locale);
   } catch {
-    return [];
+    return localFallback(locale);
   }
 };
 
@@ -166,8 +167,9 @@ export const getShopProductBySlug = async (
     )
       .bind(slug)
       .first?.()) as ShopProductRow | null | undefined;
-    return row ? normalizeRow(row, locale) : undefined;
+    const product = row ? normalizeRow(row, locale) : undefined;
+    return product ?? localFallback(locale).find((item) => item.slug === slug);
   } catch {
-    return undefined;
+    return localFallback(locale).find((item) => item.slug === slug);
   }
 };

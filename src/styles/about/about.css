@@ -10,6 +10,10 @@
   min-block-size: calc(100svh - 4.625rem);
 }
 
+.sidera-about .about-principles {
+  background: var(--color-surface);
+}
+
 @media (max-width: 63.999rem) {
   .sidera-about {
     min-block-size: calc(100svh - 4.25rem);

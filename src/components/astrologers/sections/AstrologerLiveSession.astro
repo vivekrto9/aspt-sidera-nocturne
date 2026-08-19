@@ -401,7 +401,7 @@ const personalizedOpeningMessage = copy.openingMessage.replaceAll(
 
 <script>
   import { isActionLoading, setActionLoading } from "../../../scripts/action-loading.ts";
-  import { renderSafeMarkdown } from "../../../scripts/render-safe-markdown.ts";
+  import { cleanMarkdownSummary, renderSafeMarkdown } from "../../../scripts/render-safe-markdown.ts";
 
   const liveSession = document.querySelector<HTMLElement>("[data-live-session]");
   if (liveSession && liveSession.dataset.ready !== "true") {
@@ -530,7 +530,7 @@ const personalizedOpeningMessage = copy.openingMessage.replaceAll(
         );
         const historySummary = activeHistory?.querySelector<HTMLElement>("[data-chat-history-summary]");
         const historyTime = activeHistory?.querySelector<HTMLTimeElement>("[data-chat-history-time]");
-        if (historySummary) historySummary.textContent = String(payload?.data?.answer || cleanValue);
+        if (historySummary) historySummary.textContent = cleanMarkdownSummary(String(payload?.data?.answer || cleanValue));
         if (historyTime) {
           const now = new Date();
           historyTime.dateTime = now.toISOString();

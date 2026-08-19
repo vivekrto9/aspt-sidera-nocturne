@@ -52,6 +52,7 @@ test("Report routes use the server repository and preserve Content Studio copy",
   assert.match(repository, /FROM ap_report_products/);
   assert.match(repository, /WHERE active = 1 ORDER BY sort_order ASC/);
   assert.match(repository, /getReportProductBySlug/);
+  assert.match(repository, /catch \{[\s\S]*return localFallback\(locale\)/);
   assert.match(catalogPage, /listReportProducts\(runtimeEnv, locale\)/);
   assert.match(catalogPage, /builderEdit\(titleField\)/);
   assert.match(

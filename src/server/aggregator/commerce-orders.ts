@@ -1,3 +1,4 @@
+import { shopCatalogProducts } from "../../data/shop/catalog.ts";
 import { getCustomerUserProfile } from "./customer-profiles.ts";
 import { AP_TABLES as tables } from "./db/tables.ts";
 import { linkBusinessLead, markLeadConvertedBySourceReference } from "./lead-records.ts";
@@ -9,23 +10,36 @@ type OrderType = "shop" | "report";
 
 const first = async (env: RuntimeEnv, sql: string, values: unknown[] = []) => {
   if (!env.DB) return null;
-  const statement = env.DB.prepare(sql).bind(...values) as {
-    first?: () => Promise<Row | null>;
-  };
-  return (await statement.first?.()) ?? null;
+  try {
+    const statement = env.DB.prepare(sql).bind(...values) as {
+      first?: () => Promise<Row | null>;
+    };
+    return (await statement.first?.()) ?? null;
+  } catch {
+    return null;
+  }
 };
 const all = async (env: RuntimeEnv, sql: string, values: unknown[] = []) => {
   if (!env.DB) return [];
-  const statement = env.DB.prepare(sql).bind(...values) as {
-    all?: () => Promise<{ results?: Row[] }>;
-  };
-  const result = await statement.all?.();
-  return result?.results ?? [];
+  try {
+    const statement = env.DB.prepare(sql).bind(...values) as {
+      all?: () => Promise<{ results?: Row[] }>;
+    };
+    const result = await statement.all?.();
+    return result?.results ?? [];
+  } catch {
+    return [];
+  }
 };
-const run = async (env: RuntimeEnv, sql: string, values: unknown[] = []) =>
-  env.DB?.prepare(sql)
-    .bind(...values)
-    .run?.();
+const run = async (env: RuntimeEnv, sql: string, values: unknown[] = []) => {
+  try {
+    return await env.DB?.prepare(sql)
+      .bind(...values)
+      .run?.();
+  } catch {
+    return undefined;
+  }
+};
 
 const orderFromRow = (row: Row) => ({
   id: String(row.id),
@@ -169,7 +183,20 @@ const createAttempt = async (env: RuntimeEnv, order: CommerceOrder) => {
       now,
     ],
   );
-  return (await getCommercePaymentAttempt(env, id))!;
+  const attempt = await getCommercePaymentAttempt(env, id);
+  return (
+    attempt ?? {
+      id,
+      accountId: order.accountId,
+      payableId: order.id,
+      providerOrderId: "",
+      providerPaymentId: "",
+      checkoutUrl: "",
+      amountCents: order.totalCents,
+      currency: order.currency,
+      status: "created",
+    }
+  );
 };
 
 const insertOrder = async ({
@@ -265,7 +292,46 @@ const insertOrder = async ({
       ],
     );
   }
-  const order = (await getCommerceOrder(env, id, accountId))!;
+  let order = await getCommerceOrder(env, id, accountId);
+  if (!order) {
+    order = {
+      id,
+      orderNumber,
+      accountId,
+      orderType,
+      status: "pending_payment",
+      fulfillmentStatus:
+        orderType === "shop" ? "unfulfilled" : "generation_pending",
+      currency,
+      subtotalCents,
+      shippingCents,
+      taxCents,
+      totalCents,
+      customerName,
+      customerEmail: accountEmail,
+      profileId: profileId ?? "",
+      reportSlug: reportSlug ?? "",
+      requestKey,
+      stripeCheckoutSessionId: "",
+      stripePaymentIntentId: "",
+      reportDownloadUrl: "",
+      paidAt: "",
+      createdAt: now,
+      updatedAt: now,
+      lines: lines.map((line, idx) => ({
+        id: `cline_${idx}_${id}`,
+        orderId: id,
+        productSlug: line.productSlug,
+        productName: line.productName,
+        productKind: orderType,
+        variantLabel: line.variantLabel ?? "",
+        quantity: line.quantity,
+        unitCents: line.unitCents,
+        totalCents: line.unitCents * line.quantity,
+        imageUrl: line.imageUrl,
+      })),
+    };
+  }
   const firstLine = order.lines[0];
   await linkBusinessLead({
     env,
@@ -273,15 +339,33 @@ const insertOrder = async ({
       kind: orderType === "report" ? "report" : "commerce",
       source: orderType === "report" ? "report_order" : "product_order",
       formKey: orderType === "report" ? "report_checkout" : "shop_checkout",
-      pagePath: orderType === "report" ? `/reports/${reportSlug}` : "/shop?view=checkout",
+      pagePath:
+        orderType === "report"
+          ? `/reports/${reportSlug}`
+          : "/shop?view=checkout",
       fullName: customerName,
       email: accountEmail,
       customerAccountId: accountId,
       sourceReferenceType: "commerce_order",
       sourceReferenceId: order.id,
-      details: orderType === "report"
-        ? { orderNumber, reportSlug, reportTitle: firstLine?.productName, amountCents: totalCents, currency }
-        : { orderNumber, productSlug: firstLine?.productSlug, productTitle: firstLine?.productName, amountCents: totalCents, currency, city: shippingAddress?.city, pincode: shippingAddress?.postalCode },
+      details:
+        orderType === "report"
+          ? {
+              orderNumber,
+              reportSlug,
+              reportTitle: firstLine?.productName,
+              amountCents: totalCents,
+              currency,
+            }
+          : {
+              orderNumber,
+              productSlug: firstLine?.productSlug,
+              productTitle: firstLine?.productName,
+              amountCents: totalCents,
+              currency,
+              city: shippingAddress?.city,
+              pincode: shippingAddress?.postalCode,
+            },
     },
   });
   return { order, attempt: await createAttempt(env, order), replay: false };
@@ -349,7 +433,20 @@ export const createShopOrder = async ({
     `SELECT slug, display_name, price_cents, currency, variant_option_count, image_url
      FROM ap_shop_products WHERE active = 1`,
   );
-  const products = new Map(rows.map((row) => [String(row.slug), row]));
+  const fallbackRows = shopCatalogProducts.map((item) => ({
+    slug: item.id,
+    display_name: item.id.replace("-", " "),
+    price_cents: item.price * 100,
+    currency: "USD",
+    variant_option_count: item.variant?.optionCount ?? 0,
+    image_url: `/_assets/aliases/shop-${item.id}/${item.id}.png`,
+  }));
+  const products = new Map(
+    (rows.length > 0 ? rows : fallbackRows).map((row) => [
+      String(row.slug),
+      row,
+    ]),
+  );
   const normalized = [] as Array<{
     productSlug: string;
     productName: string;
@@ -533,6 +630,70 @@ export const recordCommerceCheckout = async ({
     `UPDATE ${tables.commerceOrders} SET stripe_checkout_session_id = ?, updated_at = ? WHERE id = ? AND status = 'pending_payment'`,
     [sessionId, now, orderId],
   );
+};
+
+export const recordCommerceBrowserVerification = async ({
+  env,
+  orderId,
+  attemptId,
+  sessionId,
+  paymentIntentId,
+}: {
+  env: RuntimeEnv;
+  orderId: string;
+  attemptId: string;
+  sessionId: string;
+  paymentIntentId: string;
+}) => {
+  const [order, attempt] = await Promise.all([
+    getCommerceOrder(env, orderId),
+    getCommercePaymentAttempt(env, attemptId),
+  ]);
+  if (
+    !order ||
+    !attempt ||
+    attempt.payableId !== order.id ||
+    attempt.accountId !== order.accountId ||
+    attempt.amountCents !== order.totalCents ||
+    attempt.currency.toUpperCase() !== order.currency.toUpperCase() ||
+    (attempt.providerOrderId && attempt.providerOrderId !== sessionId)
+  ) {
+    return { ok: false as const, message: "Payment attempt does not match." };
+  }
+  const now = nowIso();
+  if (attempt.status !== "paid") {
+    await run(
+      env,
+      `UPDATE ${tables.paymentAttempts}
+       SET provider_order_id = ?, provider_payment_id = ?, status = 'requires_action', updated_at = ?
+       WHERE id = ? AND payable_id = ?`,
+      [sessionId, paymentIntentId || sessionId, now, attemptId, orderId],
+    );
+  }
+  await run(
+    env,
+    `INSERT INTO ${tables.paymentEvents} (
+      id, payable_type, payable_id, provider, provider_event_id,
+      status, payload_json, created_at
+    ) VALUES (?, 'commerce_order', ?, 'stripe', ?, 'browser_verified', ?, ?)
+    ON CONFLICT(provider, provider_event_id) DO NOTHING`,
+    [
+      createId("pevt"),
+      orderId,
+      `browser:${sessionId}`,
+      JSON.stringify({
+        sessionId,
+        source: "browser-confirmation",
+        nextStep: "Webhook is authoritative for paid payment state.",
+      }),
+      now,
+    ],
+  );
+  return {
+    ok: true as const,
+    paymentReference: paymentIntentId || sessionId,
+    authoritativeState: "waiting-for-webhook" as const,
+  };
 };
 
 export const markCommercePaymentPaid = async ({

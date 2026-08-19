@@ -146,6 +146,10 @@
 
 .sidera-button__label {
   min-inline-size: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   overflow-wrap: anywhere;
 }
 

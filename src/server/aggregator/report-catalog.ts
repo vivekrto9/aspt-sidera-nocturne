@@ -137,10 +137,10 @@ const localFallback = (locale: SupportedLocale): ReportProduct[] =>
       currency: "USD",
       glyph: report.glyph,
       coverTone: report.coverTone,
-    imageUrl: resolveImageUrl(
-      report.slug,
-      `/_assets/aliases/reports-${report.slug}/${report.slug}.png`,
-    ),
+      imageUrl: resolveImageUrl(
+        report.slug,
+        `/_assets/aliases/reports-${report.slug}/${report.slug}.png`,
+      ),
       providerEndpointKey: undefined,
       sortOrder: (index + 1) * 10,
     }))
@@ -161,11 +161,15 @@ export const listReportProducts = async (
     const result = await env.DB.prepare(
       `${selectColumns} WHERE active = 1 ORDER BY sort_order ASC, slug ASC`,
     ).all?.<ReportProductRow>();
-    return (result?.results ?? [])
+    const reports = (result?.results ?? [])
       .map((row) => normalizeRow(row, locale))
       .filter(Boolean) as ReportProduct[];
+    return reports.length > 0 ? reports : localFallback(locale);
   } catch {
-    return [];
+    // Local and newly provisioned environments can briefly have a DB binding
+    // before the report catalog migration has been applied. Keep the public
+    // catalog usable while the database schema catches up.
+    return localFallback(locale);
   }
 };
 
@@ -182,8 +186,11 @@ export const getReportProductBySlug = async (
     )
       .bind(slug)
       .first?.()) as ReportProductRow | null | undefined;
-    return row ? normalizeRow(row, locale) : undefined;
+    return (
+      (row ? normalizeRow(row, locale) : undefined) ??
+      localFallback(locale).find((report) => report.slug === slug)
+    );
   } catch {
-    return undefined;
+    return localFallback(locale).find((report) => report.slug === slug);
   }
 };

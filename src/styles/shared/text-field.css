@@ -1,5 +1,5 @@
 .sidera-text-field {
-  --text-field-background: #ffffff;
+  --text-field-background: var(--color-surface);
   --text-field-border: rgba(var(--color-text-rgb), 0.18);
   --text-field-color: var(--color-text);
   --text-field-placeholder: var(--color-muted-soft);

@@ -1,5 +1,5 @@
 .sidera-select-field {
-  --select-field-background: #ffffff;
+  --select-field-background: var(--color-surface);
   --select-field-border: rgba(var(--color-text-rgb), 0.18);
   --select-field-color: var(--color-text);
   --select-field-hover-border: rgba(var(--color-text-rgb), 0.34);
@@ -15,7 +15,7 @@
   padding-block: 0.75rem;
   padding-inline: 0.875rem 2rem;
   background-color: var(--select-field-background);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='m2.25 4.25 3.75 3.5 3.75-3.5' fill='none' stroke='%236b5346' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='m2.25 4.25 3.75 3.5 3.75-3.5' fill='none' stroke='%23b08cf0' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-position: right 0.75rem center;
   background-repeat: no-repeat;
   background-size: 0.75rem;
@@ -102,7 +102,7 @@
   padding: 0.25rem;
   border: 1px solid rgba(var(--color-text-rgb), 0.16);
   border-radius: 0.6875rem;
-  background: #ffffff;
+  background: var(--color-panel);
   box-shadow: 0 1rem 2rem -1rem rgba(var(--color-text-rgb), 0.48);
 }
 
@@ -132,7 +132,7 @@
 }
 
 .sidera-select-popover__option[aria-selected="true"] {
-  background: #f3ecdf;
+  background: var(--color-surface);
   color: var(--color-text);
   font-weight: 600;
 }

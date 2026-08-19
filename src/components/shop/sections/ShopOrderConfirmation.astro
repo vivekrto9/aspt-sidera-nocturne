@@ -204,7 +204,7 @@ const initialMeta = (product: ConfirmationProduct) =>
         headers: { "content-type": "application/json", "x-astropages-customer-csrf": root.dataset.csrfToken || "" },
         body: JSON.stringify({ orderId: order.id, attemptId: root.dataset.attemptId, sessionId: root.dataset.stripeSessionId }),
       });
-      if (!response.ok) {
+      if (!response.ok && response.status !== 202) {
         window.location.assign("/shop?view=failed");
         return;
       }
