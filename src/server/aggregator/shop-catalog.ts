@@ -5,6 +5,7 @@ import {
   type ShopProductId,
 } from "../../data/shop/catalog.ts";
 import type { RuntimeEnv } from "./runtime.ts";
+import { selectIndependentPrice } from "./payment-pricing.ts";
 
 export type ShopProduct = ShopCatalogProduct & {
   slug: string;
@@ -27,6 +28,8 @@ type ShopProductRow = {
   variant_key?: unknown;
   variant_option_count?: unknown;
   image_url?: unknown;
+  price_inr_cents?: unknown;
+  price_usd_cents?: unknown;
 };
 
 const productIds = new Set<ShopProductId>(
@@ -131,7 +134,7 @@ const localFallback = (locale: SupportedLocale): ShopProduct[] =>
   }));
 
 const selectColumns = `
-  SELECT id, slug, category, price_cents, currency, personalized, rating,
+  SELECT id, slug, category, price_cents, price_inr_cents, price_usd_cents, currency, personalized, rating,
          reviews_count, tone, variant_key, variant_option_count, image_url
   FROM ap_shop_products
 `;
@@ -145,12 +148,12 @@ export const listShopProducts = async (
     const result = await env.DB.prepare(
       `${selectColumns} WHERE active = 1 ORDER BY sort_order ASC, slug ASC`,
     ).all?.<ShopProductRow>();
-    const rows = (result?.results ?? [])
+    const priced = await Promise.all((result?.results ?? []).map((row) => selectIndependentPrice(env, row as Record<string, unknown>)));
+    return priced
       .map((row) => normalizeRow(row, locale))
       .filter(Boolean) as ShopProduct[];
-    return rows.length > 0 ? rows : localFallback(locale);
   } catch {
-    return localFallback(locale);
+    return [];
   }
 };
 
@@ -167,8 +170,7 @@ export const getShopProductBySlug = async (
     )
       .bind(slug)
       .first?.()) as ShopProductRow | null | undefined;
-    const product = row ? normalizeRow(row, locale) : undefined;
-    return product ?? localFallback(locale).find((item) => item.slug === slug);
+    return row ? normalizeRow(await selectIndependentPrice(env, row as Record<string, unknown>), locale) : undefined;
   } catch {
     return localFallback(locale).find((item) => item.slug === slug);
   }
